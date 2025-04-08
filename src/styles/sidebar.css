@@ -1,0 +1,13 @@
+.sidebar button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  transition: font-weight 0.3s ease;
+  border-bottom: 1px solid var(--color-border);
+}

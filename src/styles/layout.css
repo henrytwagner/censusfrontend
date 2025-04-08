@@ -1,0 +1,25 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.body {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.sidebar {
+  color: #000;
+  width: 200px;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  padding: 1rem;
+}
