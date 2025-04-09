@@ -5,11 +5,13 @@
   gap: 10px;
   height: 100%;
   width: clamp(200px, 20%, 250px);
+  box-sizing: border-box;
+  padding-bottom: 0;
 }
 
 .contactlist .contactlist-scrollable {
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-top: 10px;
 }
 
@@ -34,13 +36,22 @@
 
 .contactlist .person {
   display: flex;
-  height: 30px;
-  padding: 2px 8px;
   align-items: center;
+  padding: 2px 8px;
+  height: 30px;
   flex-shrink: 0;
   align-self: stretch;
+  justify-content: flex-start;
 
   border-top: 0.25px solid #e0e0e0;
+}
+
+.contactlist .personname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%; /* important */
+  text-align: left;
 }
 
 /*TODO*/

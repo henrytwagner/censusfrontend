@@ -4,6 +4,7 @@
   align-items: center;
   padding: 1rem;
   border-bottom: 1px solid var(--color-border, #e5e7eb);
+  flex-shrink: 0;
 }
 
 .header > div {
