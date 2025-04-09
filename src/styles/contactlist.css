@@ -4,21 +4,28 @@
   padding: 30px;
   gap: 10px;
   height: 100%;
-  width: clamp(150px, 20%, 300px);
+  width: clamp(200px, 20%, 250px);
 }
 
 .contactlist .contactlist-scrollable {
   width: 100%;
   overflow-y: scroll;
+  padding-top: 10px;
+}
+
+.contactlist .contactlist-scrollable::-webkit-scrollbar {
+  display: none;
 }
 
 .contactlist .characterheader {
   display: flex;
   height: 20px;
-  padding: 1px 6px;
+  padding: 2px 8px;
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+
+  font-weight: var(--font-weight-bold, 600);
 
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.93);
@@ -28,12 +35,17 @@
 .contactlist .person {
   display: flex;
   height: 30px;
-  padding: 0px 12px;
+  padding: 2px 8px;
   align-items: center;
   flex-shrink: 0;
   align-self: stretch;
 
-  border-bottom: 0.25px solid #e0e0e0;
+  border-top: 0.25px solid #e0e0e0;
+}
+
+/*TODO*/
+.contactlist .person:first-of-type {
+  border-top: 0px solid transparent;
 }
 
 .contactlist .person .lastname {
