@@ -19,6 +19,7 @@
   display: none;
 }
 
+/*TODO: make this not just character, if sorting contacts by recent want words*/
 .contactlist .characterheader {
   display: flex;
   height: 20px;
@@ -34,6 +35,10 @@
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
 }
 
+.contactlist .characterheader + * {
+  border-top: 0.25px solid transparent;
+}
+
 .contactlist .person {
   display: flex;
   align-items: center;
@@ -42,6 +47,7 @@
   flex-shrink: 0;
   align-self: stretch;
   justify-content: flex-start;
+  border-radius: 5px;
 
   border-top: 0.25px solid #e0e0e0;
 }
@@ -54,11 +60,24 @@
   text-align: left;
 }
 
-/*TODO*/
 .contactlist .person:first-of-type {
-  border-top: 0px solid transparent;
+  border-top: none;
 }
 
 .contactlist .person .lastname {
   font-weight: 600;
+}
+
+.contactlist .person.selected {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-left: 3px solid var(--color-primary, #3b82f6);
+  border-bottom: 0.25px solid #e0e0e0;
+}
+
+.contactlist .person:hover {
+  background-color: rgba(0, 0, 0, 0.015);
+}
+
+.contactlist .person.selected + * {
+  border-top: none;
 }
