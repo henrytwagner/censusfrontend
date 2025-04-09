@@ -3,6 +3,7 @@
   width: 200px;
   padding: 1rem;
   border-right: 1px solid #ddd;
+  height: 100%;
 }
 
 .sidebar button {

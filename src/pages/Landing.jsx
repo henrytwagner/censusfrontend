@@ -1,14 +1,14 @@
 import React from 'react';
-import ContactList from '../components/ContactList';
+import SideBar from '../components/SideBar';
 import Empty from '../components/Empty';
 
-const Home = () => {
+const Landing = () => {
   return (
     <>
-      <ContactList />
+      <SideBar />
       <Empty />
     </>
   );
 };
 
-export default Home;
+export default Landing;

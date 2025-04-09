@@ -1,20 +1,17 @@
+import { Outlet } from 'react-router-dom';
 import React from 'react';
 import Header from './Header';
-import Sidebar from './SideBar';
-import ContactList from './ContactList';
 import '../styles/layout.css';
 
-function Layout({ children }) {
+const Layout = () => {
   return (
     <div className="layout">
       <Header />
       <div className="body">
-        {/* <Sidebar /> */}
-        <ContactList />
-        <main className="main-content">{children}</main>
+        <Outlet />
       </div>
     </div>
   );
-}
+};
 
 export default Layout;
