@@ -3,6 +3,7 @@ import '../styles/contactlist.css';
 import SearchBar from './SearchBar';
 
 const contacts = [
+  // A
   { first: 'Mike', last: 'Adams' },
   { first: 'Sarah', last: 'Akers' },
   { first: 'Liam', last: 'Albright' },
@@ -13,60 +14,139 @@ const contacts = [
   { first: 'Ava', last: 'Allison' },
   { first: 'James', last: 'Alston' },
   { first: 'Sophia', last: 'Alvarez' },
-  { first: 'William', last: 'Andersen' },
-  { first: 'Isabella', last: 'Anderson' },
-  { first: 'Benjamin', last: 'Andrade' },
-  { first: 'Mia', last: 'Andrews' },
-  { first: 'Lucas', last: 'Angel' },
-  { first: 'Charlotte', last: 'Anthony' },
-  { first: 'Henry', last: 'Archer' },
-  { first: 'Amelia', last: 'Arellano' },
-  { first: 'Alexander', last: 'Ariza' },
-  { first: 'Harper', last: 'Armand' },
-  { first: 'Ethan', last: 'Armstrong' },
-  { first: 'Evelyn', last: 'Arnold' },
-  { first: 'Daniel', last: 'Arroyo' },
-  { first: 'Abigail', last: 'Arthur' },
-  { first: 'Matthew', last: 'Asher' },
-  { first: 'Emily', last: 'Ashley' },
-  { first: 'Jackson', last: 'Ashton' },
-  { first: 'Ella', last: 'Atkins' },
-  { first: 'Sebastian', last: 'Atwood' },
-  { first: 'Elizabeth', last: 'Aubrey' },
-  { first: 'Logan', last: 'Auger' },
-  { first: 'Chloe', last: 'Ault' },
-  { first: 'Levi', last: 'Austin' },
-  { first: 'Grace', last: 'Avery' },
-  { first: 'David', last: 'Avila' },
-  { first: 'Lily', last: 'Axelrod' },
-  { first: 'Wyatt', last: 'Ayers' },
-  { first: 'Zoey', last: 'Ayres' },
-  { first: 'Owen', last: 'Aziz' },
-  { first: 'Nora', last: 'Azizi' },
+  // B
+  { first: 'Logan', last: 'Burger' },
+  { first: 'Blake', last: 'Bryant' },
+  { first: 'Zoe', last: 'Benson' },
+  { first: 'Miles', last: 'Baker' },
+  { first: 'Ella', last: 'Briggs' },
+  // C
+  { first: 'Grace', last: 'Conners' },
+  { first: 'Caleb', last: 'Coleman' },
+  { first: 'Nina', last: 'Clark' },
+  { first: 'Aaron', last: 'Carter' },
+  { first: 'Jade', last: 'Caldwell' },
+  // D
+  { first: 'Ryan', last: 'Dalton' },
+  { first: 'Eva', last: 'Dunn' },
+  { first: 'Leo', last: 'Daniels' },
+  { first: 'Maya', last: 'Dorsey' },
+  { first: 'Ian', last: 'Dillard' },
+  // E
+  { first: 'Sienna', last: 'Ellis' },
+  { first: 'Gavin', last: 'Edwards' },
+  { first: 'Tessa', last: 'Emerson' },
+  { first: 'Asher', last: 'Elliott' },
+  { first: 'Hazel', last: 'Evans' },
+  // G
+  { first: 'Julian', last: 'Gaines' },
+  { first: 'Mila', last: 'Gibson' },
+  { first: 'Axel', last: 'Griffin' },
+  { first: 'Aria', last: 'Garner' },
+  { first: 'Wesley', last: 'George' },
+  // H
+  { first: 'Luna', last: 'Harper' },
+  { first: 'Carson', last: 'Hayes' },
+  { first: 'Bella', last: 'Hoffman' },
+  { first: 'Jonah', last: 'Hammond' },
+  { first: 'Sadie', last: 'Hicks' },
+  // J
+  { first: 'Piper', last: 'Jordan' },
+  { first: 'Jaxon', last: 'Jennings' },
+  { first: 'Aurora', last: 'Justice' },
+  { first: 'Emmett', last: 'Jacobs' },
+  { first: 'Anna', last: 'Jarvis' },
+  // K
+  { first: 'Reid', last: 'Keller' },
+  { first: 'Ruby', last: 'Klein' },
+  { first: 'Tristan', last: 'Kim' },
+  { first: 'Isla', last: 'Kirk' },
+  { first: 'Brody', last: 'Kane' },
+  // L
+  { first: 'Adeline', last: 'Lewis' },
+  { first: 'Elliot', last: 'Lee' },
+  { first: 'Alice', last: 'Lawson' },
+  { first: 'Maddox', last: 'Lowry' },
+  { first: 'Clara', last: 'Leon' },
+  // M
+  { first: 'Juliette', last: 'Murray' },
+  { first: 'Preston', last: 'Moss' },
+  { first: 'Hope', last: 'Moody' },
+  { first: 'Silas', last: 'Meadows' },
+  { first: 'Freya', last: 'Marin' },
+  // R
+  { first: 'Adrian', last: 'Reed' },
+  { first: 'Cora', last: 'Rivers' },
+  { first: 'Jude', last: 'Russell' },
+  { first: 'Vivian', last: 'Roach' },
+  { first: 'Beau', last: 'Ramos' },
+  // S
+  { first: 'Ivy', last: 'Sharp' },
+  { first: 'Damian', last: 'Simmons' },
+  { first: 'Lena', last: 'Stone' },
+  { first: 'Zion', last: 'Strickland' },
+  { first: 'Willa', last: 'Sloan' },
+  // T
+  { first: 'Giselle', last: 'Tanner' },
+  { first: 'Keegan', last: 'Thorne' },
+  { first: 'Skye', last: 'Turner' },
+  { first: 'Finn', last: 'Talbot' },
+  { first: 'Delilah', last: 'Trevino' },
+  // W
+  { first: 'Henry', last: 'Wagner' },
+  { first: 'Eli', last: 'Wallace' },
+  { first: 'Camille', last: 'Wiley' },
+  { first: 'Dean', last: 'Watkins' },
+  { first: 'Faith', last: 'West' },
 ];
 
-const ContactList = ({ onSelect }) => {
+const groupBy = (array, getKey) => {
+  return array.reduce((result, item) => {
+    const key = getKey(item);
+    if (!result[key]) {
+      result[key] = [];
+    }
+    result[key].push(item);
+    return result;
+  }, {});
+};
+
+const ContactList = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const handleSelect = (index, person) => {
-    setSelectedIndex(index);
-    onSelect?.(person); // pass person data up if needed
-  };
+  const groupedContacts = groupBy(contacts, (person) =>
+    person.last[0].toUpperCase()
+  );
+
+  const sortedKeys = Object.keys(groupedContacts).sort();
+
+  let itemCounter = 0;
 
   return (
     <div className="contactlist">
       <SearchBar />
       <div className="contactlist-scrollable">
-        <div className="characterheader">A</div>
-        {contacts.map((person, index) => (
-          <div
-            key={`${person.first}-${person.last}`}
-            className={`person ${selectedIndex === index ? 'selected' : ''}`}
-            onClick={() => handleSelect(index, person)}
-          >
-            <p className="personname">
-              {person.first} <span className="lastname">{person.last}</span>
-            </p>
+        {sortedKeys.map((letter) => (
+          <div key={letter}>
+            <div className="characterheader">{letter}</div>
+            {groupedContacts[letter].map((person) => {
+              const index = itemCounter++;
+              return (
+                <div
+                  key={`${person.first}-${person.last}`}
+                  className={`person ${selectedIndex === index ? 'selected' : ''}`}
+                  onClick={() => {
+                    setSelectedIndex(index);
+                    console.log(`Selected: ${person.first}`);
+                  }}
+                >
+                  <p className="personname">
+                    {person.first}{' '}
+                    <span className="lastname">{person.last}</span>
+                  </p>
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>
