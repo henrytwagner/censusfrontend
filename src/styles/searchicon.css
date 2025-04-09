@@ -1,0 +1,11 @@
+svg {
+  padding: 5px;
+  fill: #000000;
+  height: 100%;
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+}
+
+svg path {
+  stroke-width: 1rem;
+}
