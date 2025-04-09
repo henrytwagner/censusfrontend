@@ -37,6 +37,7 @@
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
 }
 
+/*TODO: Slight shift below when clicking on last element of letter*/
 .contactlist .characterheader + * {
   border-top: 0.25px solid transparent;
 }
