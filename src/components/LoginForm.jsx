@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ const LoginForm = ({ onLogin }) => {
       localStorage.setItem('refresh', data.refresh);
 
       onLogin?.(data.access);
+      navigate('/');
     } catch (err) {
       setError(err.message);
     }

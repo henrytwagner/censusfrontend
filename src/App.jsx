@@ -7,6 +7,7 @@ import Landing from './pages/Landing';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Empty from './components/Empty';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,7 +16,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
           <Route path="landing" element={<Landing />} />
           <Route path="login" element={<Login />} />
           <Route path="empty" element={<Empty />} />
