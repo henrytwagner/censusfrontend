@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthFetch } from '../utils/authFetch';
 import '../styles/contactlist.css';
 import SearchBar from './SearchBar';
 
@@ -14,13 +15,15 @@ const groupBy = (array, getKey) => {
 };
 
 const ContactList = () => {
+  const authFetch = useAuthFetch();
+
   const [contacts, setContacts] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch('api/contacts'); //TODO: connect backend
+        const response = await authFetch('api/contacts'); //TODO: connect backend
         const data = await response.json();
         setContacts(data);
       } catch (err) {
@@ -31,6 +34,7 @@ const ContactList = () => {
     fetchContacts();
   }, []);
 
+  /*TODO: make grouping by last visited (add to contact model)*/
   const groupedContacts = groupBy(contacts, (person) =>
     person.last_name[0].toUpperCase()
   );
