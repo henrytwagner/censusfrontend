@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Empty from './components/Empty';
 import ProtectedRoute from './components/ProtectedRoute';
+import Organization from './pages/Organization';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
           <Route path="landing" element={<Landing />} />
           <Route path="login" element={<Login />} />
           <Route path="empty" element={<Empty />} />
+          <Route path="organization" element={<Organization />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
