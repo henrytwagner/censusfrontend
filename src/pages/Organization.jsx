@@ -5,7 +5,7 @@ import OrgHeader from '../components/OrgHeader';
 const Organization = () => {
   return (
     <div className="org-page">
-      <OrgHeader />
+      <OrgHeader id="b2c0e259-a7c7-49ad-9d93-3c66308bb8a3" />
       <div className="org-members">
         <div className="org-member-list">
           <div className="member-row">Henry Wagner</div>

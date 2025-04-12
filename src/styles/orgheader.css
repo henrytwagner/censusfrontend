@@ -22,6 +22,23 @@
 
   border-radius: 16px;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.org-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* <- the magic */
+  object-position: center;
+}
+
+.org-image .org-placeholder {
+  width: 114px;
+  height: 114px;
 }
 
 .org-header .org-header-content .org-info {
