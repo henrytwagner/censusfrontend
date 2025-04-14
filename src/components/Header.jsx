@@ -37,12 +37,15 @@ function Header() {
             <img
               className="h-full w-full object-cover object-center"
               src={profileImage}
+              // TODO: Update to use real api results
               // src={me.profile.profile_image_url}
               alt=""
             />
           ) : (
             <div className="w-full h-full bg-blue-700 text-white text-xl font-bold text-center content-center">
-              HW
+              {/* TODO: figure out why this keeps braking */}
+              {/* {me.first_name[0] + me.last_name[0]} */}
+              {me.first_name}
             </div>
           )}
         </div>
