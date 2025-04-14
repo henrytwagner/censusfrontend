@@ -25,10 +25,12 @@ function OrgStack() {
   return (
     <div className="orgstack">
       {orgs.map((org) => (
-        <div className="aspect-square m-0.5 hover:m-0 h-full rounded-md overflow-hidden">
+        <div
+          key={org.id}
+          className="aspect-square m-0.5 hover:m-0 h-full rounded-md overflow-hidden"
+        >
           {org.photo_url ? (
             <img
-              key={org.id}
               className="h-full w-full object-cover object-center"
               src={profileImage}
               // TODO: Update to use real api results
@@ -36,10 +38,7 @@ function OrgStack() {
               alt=""
             />
           ) : (
-            <div
-              key={org.id}
-              className="w-full h-full bg-pink-500 text-white text-xl font-bold text-center content-center"
-            >
+            <div className="w-full h-full bg-pink-500 text-white text-xl font-bold text-center content-center">
               {org.name}
             </div>
           )}
