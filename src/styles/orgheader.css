@@ -1,9 +1,8 @@
 .org-header {
   display: flex;
-  padding: 46px;
   justify-content: center;
   align-items: flex-start;
-  width: 60%;
+  width: 50%;
 
   border-radius: 40px;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
@@ -17,8 +16,8 @@
 }
 
 .org-header .org-header-content .org-image {
-  width: 114px;
-  height: 114px;
+  width: 250px;
+  height: 250px;
 
   border-radius: 16px;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
@@ -37,8 +36,8 @@
 }
 
 .org-image .org-placeholder {
-  width: 114px;
-  height: 114px;
+  width: 250px;
+  height: 250px;
 }
 
 .org-header .org-header-content .org-info {
@@ -54,7 +53,7 @@
 
 .org-header .org-header-content .org-info .org-title {
   color: var(--Text-Secondary, #a1a1a1);
-  font-size: 48px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 300;
   line-height: normal;

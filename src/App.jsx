@@ -17,7 +17,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="landing" element={<Landing />} />
-
+        <Route
+          path="login"
+          element={
+            <>
+              <Login />
+            </>
+          }
+        />
         <Route path="/" element={<Layout />}>
           <Route
             index
@@ -36,7 +43,6 @@ function App() {
             }
           />
 
-          <Route path="login" element={<Login />} />
           <Route path="empty" element={<Empty />} />
         </Route>
         <Route path="*" element={<NotFound />} />
