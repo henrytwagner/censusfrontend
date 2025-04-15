@@ -23,7 +23,7 @@ const ContactList = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await authFetch('api/contacts'); //TODO: connect backend
+        const response = await authFetch('/api/contacts'); //TODO: connect backend
         const data = await response.json();
         setContacts(data);
       } catch (err) {
@@ -44,25 +44,37 @@ const ContactList = () => {
   let itemCounter = 0;
 
   return (
-    <div className="contactlist">
+    <div
+      className="contactlist border-r border-gray-300 flex flex-col p-6 gap-2.5 h-full"
+      style={{ width: 'clamp(200px, 20%, 250px)' }}
+    >
       <SearchBar />
-      <div className="contactlist-scrollable">
+      <div className="contactlist-scrollable w-full overflow-y-auto pt-2.5 pb-7.5 scrollbar-hide">
+        {/* TODO: make this not just character, if sorting contacts by recent want words */}
         {sortedKeys.map((letter) => (
           <div key={letter}>
-            <div className="characterheader">{letter}</div>
+            <div
+              style={{ boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.12)' }}
+              className="characterheader bg-white items-center flex h-5 px-2 py-0.5 shrink-0 font-bold rounded-md"
+            >
+              {letter}
+            </div>
             {groupedContacts[letter].map((person) => {
+              /*TODO: Slight shift below when clicking on last element of letter*/
               const index = itemCounter++;
               return (
                 <div
                   key={`${person.first_name}-${person.last_name}`}
-                  className={`person ${selectedIndex === index ? 'selected' : ''}`}
+                  className={`person cursor-default flex items-center py-0.5 px-2 h-7.5 flex-shrink-0 self-stretch justify-start rounded-md border-t border-gray-200 hover:bg-black/1.5 ${selectedIndex === index ? 'selected border-l-4 border-l-blue-500 bg-black/5' : ''}`}
                   onClick={() => {
                     setSelectedIndex(index);
                   }}
                 >
-                  <p className="personname">
+                  <p className="personname truncate w-full text-left">
                     {person.first_name}{' '}
-                    <span className="lastname">{person.last_name}</span>
+                    <span className="lastname font-bold">
+                      {person.last_name}
+                    </span>
                   </p>
                 </div>
               );

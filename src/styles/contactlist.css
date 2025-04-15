@@ -1,84 +1,9 @@
-.contactlist {
-  border-right: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  gap: 10px;
-  height: 100%;
-  width: clamp(200px, 20%, 250px);
-  box-sizing: border-box;
-  padding-bottom: 0;
-}
-
-.contactlist .contactlist-scrollable {
-  width: 100%;
-  overflow-y: auto;
-  padding-top: 10px;
-  padding-bottom: 30px;
-}
-
-.contactlist .contactlist-scrollable::-webkit-scrollbar {
-  display: none;
-}
-
-/*TODO: make this not just character, if sorting contacts by recent want words*/
-.contactlist .characterheader {
-  display: flex;
-  height: 20px;
-  padding: 2px 8px;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  font-weight: var(--font-weight-bold, 600);
-
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.93);
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-}
-
-/*TODO: Slight shift below when clicking on last element of letter*/
 .contactlist .characterheader + * {
   border-top: 0.25px solid transparent;
 }
 
-.contactlist .person {
-  display: flex;
-  align-items: center;
-  padding: 2px 8px;
-  height: 30px;
-  flex-shrink: 0;
-  align-self: stretch;
-  justify-content: flex-start;
-  border-radius: 5px;
-
-  border-top: 0.25px solid #e0e0e0;
-}
-
-.contactlist .personname {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%; /* important */
-  text-align: left;
-}
-
 .contactlist .person:first-of-type {
   border-top: none;
-}
-
-.contactlist .person .lastname {
-  font-weight: 600;
-}
-
-.contactlist .person.selected {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-left: 3px solid var(--color-primary, #3b82f6);
-  border-bottom: 0.25px solid #e0e0e0;
-}
-
-.contactlist .person:hover {
-  background-color: rgba(0, 0, 0, 0.015);
 }
 
 .contactlist .person.selected + * {
