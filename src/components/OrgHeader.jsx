@@ -9,22 +9,19 @@ const OrgHeader = ({ id }) => {
   const [organizationInfo, setOrganizationInfo] = useState({});
   const [finalImgSrc, setFinalImgSrc] = useState(null);
 
-  useEffect(
-    () => {
-      const fetchOrganizationInfo = async () => {
-        try {
-          const response = await authFetch(`api/organizations/${id}/`);
-          const data = await response.json();
-          setOrganizationInfo(data);
-        } catch (err) {
-          console.error('Failed to load organization');
-        }
-      };
+  useEffect(() => {
+    const fetchOrganizationInfo = async () => {
+      try {
+        const response = await authFetch(`/api/organizations/${id}`);
+        const data = await response.json();
+        setOrganizationInfo(data);
+      } catch (err) {
+        console.error('Failed to load organization');
+      }
+    };
 
-      fetchOrganizationInfo();
-    },
-    { id }
-  );
+    fetchOrganizationInfo();
+  }, [id]);
 
   useEffect(() => {
     if (!organizationInfo?.photo_url) return;

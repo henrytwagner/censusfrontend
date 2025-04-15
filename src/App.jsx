@@ -16,6 +16,8 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="landing" element={<Landing />} />
+
         <Route path="/" element={<Layout />}>
           <Route
             index
@@ -25,10 +27,17 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="landing" element={<Landing />} />
+          <Route
+            path="organization/:id"
+            element={
+              <ProtectedRoute>
+                <Organization />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="login" element={<Login />} />
           <Route path="empty" element={<Empty />} />
-          <Route path="organization" element={<Organization />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

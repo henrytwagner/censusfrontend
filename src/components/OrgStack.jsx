@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/orgstack.css';
 import { useAuthFetch } from '../utils/authFetch';
 import profileImage from '../assets/Headshot.png';
+import { Link } from 'react-router-dom';
 
 function OrgStack() {
   const authFetch = useAuthFetch();
@@ -11,7 +12,7 @@ function OrgStack() {
   useEffect(() => {
     const fetchOrgs = async () => {
       try {
-        const response = await authFetch('api/organizations/');
+        const response = await authFetch('/api/organizations/');
         const data = await response.json();
         setOrgs(data);
       } catch (err) {
@@ -25,16 +26,15 @@ function OrgStack() {
   return (
     <div className="orgstack">
       {orgs.map((org) => (
-        <div
+        <Link
+          to={`/organization/${org.id}/`}
           key={org.id}
           className="aspect-square m-0.5 hover:m-0 h-full rounded-md overflow-hidden"
         >
           {org.photo_url ? (
             <img
               className="h-full w-full object-cover object-center"
-              src={profileImage}
-              // TODO: Update to use real api results
-              // src={me.profile.profile_image_url}
+              src={org.photo_url}
               alt=""
             />
           ) : (
@@ -42,7 +42,7 @@ function OrgStack() {
               {org.name}
             </div>
           )}
-        </div>
+        </Link>
       ))}
     </div>
   );

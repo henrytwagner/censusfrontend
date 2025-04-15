@@ -1,9 +1,11 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import HeaderNoAuth from '../components/HeaderNoAuth';
 
 const Landing = () => {
   return (
     <>
+      <HeaderNoAuth />
       <div className="flex-col overflow-y-auto w-full content-between">
         <div className="flex flex-col md:flex-row items-stretch md:justify-between bg-black">
           <div className="w-full md:w-fit flex flex-col p-12 md:pl-40 md:py-20 gap-2 items-center text-center md:items-start md:text-left text-white">

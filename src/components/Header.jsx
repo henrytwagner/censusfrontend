@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import OrgStack from './OrgStack';
-import '../styles/header.css';
-import profileImage from '../assets/Headshot.png';
 import { useAuthFetch } from '../utils/authFetch';
 
 function Header() {
   const authFetch = useAuthFetch();
-
   const [me, setMe] = useState({});
 
   useEffect(() => {
     const fetchMe = async () => {
       try {
-        const response = await authFetch('api/users/me/');
+        const response = await authFetch('/api/users/me/');
         const data = await response.json();
         setMe(data);
       } catch (err) {
@@ -21,31 +19,32 @@ function Header() {
     };
 
     fetchMe();
-  }, {});
+  }, []);
 
   return (
-    <header className="header">
-      <div className="left">
-        <OrgStack />
+    <header className="flex justify-between items-center p-4 border-b border-gray-200 flex-shrink-0">
+      {/* Left section */}
+      <div className="flex justify-start items-center flex-1 h-[50px]">
+        {me && <OrgStack />}
       </div>
-      <div className="center" style={{ fontSize: '40px', fontWeight: 100 }}>
+      {/* Center section */}
+      <div className="flex justify-center items-center flex-1 h-[50px] text-[40px] font-thin">
         CENSUS
       </div>
-      <div className="right flex flex-row items-center gap-2">
+      {/* Right section */}
+      <div className="flex justify-end items-center flex-1 h-[50px] gap-2">
         <div className="rounded-full h-full aspect-square overflow-hidden">
-          {!me ? (
+          {me.profile_image_url ? (
             <img
               className="h-full w-full object-cover object-center"
-              src={profileImage}
-              // TODO: Update to use real api results
-              // src={me.profile.profile_image_url}
+              src={me.profile_image_url}
               alt=""
             />
           ) : (
-            <div className="w-full h-full bg-blue-700 text-white text-xl font-bold text-center content-center">
-              {/* TODO: figure out why this keeps braking */}
-              {/* {me.first_name[0] + me.last_name[0]} */}
-              {me.first_name}
+            <div className="w-full h-full bg-blue-700 text-white text-xl font-bold flex items-center justify-center">
+              {me.first_name && me.last_name
+                ? me.first_name[0] + me.last_name[0]
+                : ''}
             </div>
           )}
         </div>
