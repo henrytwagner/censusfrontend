@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import OrgStack from './OrgStack';
 import { useAuthFetch } from '../utils/authFetch';
+import contactsImage from '../assets/ContactsInvert.png';
 
 function Header() {
   const authFetch = useAuthFetch();
@@ -24,7 +25,17 @@ function Header() {
   return (
     <header className="flex justify-between items-center p-4 border-b border-gray-200 flex-shrink-0">
       {/* Left section */}
-      <div className="flex justify-start items-center flex-1 h-[50px]">
+      <div className="flex justify-start items-center flex-1 h-20">
+        <Link
+          to={'/'}
+          className="aspect-square m-0.5 hover:m-0 h-full rounded-md overflow-hidden"
+        >
+          <img
+            className="h-full w-full object-cover object-center"
+            src={contactsImage}
+            alt=""
+          />
+        </Link>
         {me && <OrgStack />}
       </div>
       {/* Center section */}
