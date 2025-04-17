@@ -42,7 +42,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route path="empty" element={<Empty />} />
         </Route>
         <Route path="*" element={<NotFound />} />
