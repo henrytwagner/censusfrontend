@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/orgheader.css';
 import { useAuthFetch } from '../utils/authFetch';
-import sampleImage from '../assets/OrgBackupImage.png';
+import sampleImage from '../assets/ContactsInvert.png';
 
 const OrgHeader = ({ id }) => {
   const authFetch = useAuthFetch();
@@ -10,6 +10,17 @@ const OrgHeader = ({ id }) => {
   const [finalImgSrc, setFinalImgSrc] = useState(null);
 
   useEffect(() => {
+    if (!id) {
+      // Hardcode default values when no ID is provided
+      setOrganizationInfo({
+        name: 'Default Organization',
+        bio: 'This is a default organization description.',
+      });
+      setFinalImgSrc(sampleImage);
+      return;
+    }
+
+    // Fetch organization info if ID is provided
     const fetchOrganizationInfo = async () => {
       try {
         const response = await authFetch(`/api/organizations/${id}`);

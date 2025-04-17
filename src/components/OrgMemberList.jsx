@@ -2,7 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useAuthFetch } from '../utils/authFetch';
 import SearchBar from './SearchBar';
 
-const OrgMemberList = ({ id }) => {
+const groupBy = (array, getKey) => {
+  return array.reduce((result, item) => {
+    const key = getKey(item);
+    if (!result[key]) {
+      result[key] = [];
+    }
+    result[key].push(item);
+    return result;
+  }, {});
+};
+
+const OrgMemberList = ({ fetchUrl, groupByField, renderFields }) => {
   const authFetch = useAuthFetch();
 
   const [members, setMembers] = useState([]);
@@ -10,19 +21,23 @@ const OrgMemberList = ({ id }) => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await authFetch(`/api/organizations/${id}/members`);
+        const response = await authFetch(fetchUrl);
         const data = await response.json();
-        const sortedData = data.sort((a, b) =>
-          (a.last_name || '').localeCompare(b.last_name || '')
-        );
-        setMembers(sortedData);
+        setMembers(data);
       } catch (err) {
         console.error('Failed to load members:', err);
       }
     };
 
     fetchMembers();
-  }, [id]);
+  }, [fetchUrl]);
+
+  const groupedMembers = groupBy(
+    members,
+    (member) => member[groupByField]?.[0]?.toUpperCase() || '#'
+  );
+
+  const sortedKeys = Object.keys(groupedMembers).sort();
 
   return (
     <div className="w-2/4 h-fit flex flex-col gap-4 text-lg">
@@ -34,30 +49,34 @@ const OrgMemberList = ({ id }) => {
         <div className="w-20 font-bold">Role</div>
       </div>
       <div>
-        {members.map((member) => (
-          <div
-            key={member.username}
-            className="flex items-center justify-start gap-4 px-2 py-0 "
-          >
-            <div className="rounded-full h-12 aspect-square overflow-hidden m-2">
-              {member.profile_image_url ? (
-                <img
-                  className="h-full w-full object-cover object-center"
-                  src={member.profile_image_url}
-                  alt=""
-                />
-              ) : (
-                <div className="w-full h-full bg-blue-700 text-white text-xl font-bold flex items-center justify-center">
-                  {member.first_name && member.last_name
-                    ? member.first_name[0] + member.last_name[0]
-                    : ''}
+        {sortedKeys.map((key) => (
+          <div key={key}>
+            {/* <div className="font-bold bg-gray-100 px-2 py-1 rounded-md mb-2">
+              {key}
+            </div> */}
+            {groupedMembers[key].map((member) => (
+              <div
+                key={member.username}
+                className="flex items-center justify-start gap-4 px-2 py-0"
+              >
+                <div className="rounded-full h-12 aspect-square overflow-hidden m-2">
+                  {member.profile_image_url ? (
+                    <img
+                      className="h-full w-full object-cover object-center"
+                      src={member.profile_image_url}
+                      alt=""
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-blue-700 text-white text-xl font-bold flex items-center justify-center">
+                      {member.first_name && member.last_name
+                        ? member.first_name[0] + member.last_name[0]
+                        : ''}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="w-20 ">{`${member.first_name}`}</div>
-            <div className="w-30 font-bold">{`${member.last_name}`}</div>
-            <div className="w-40 text-gray-500">{`${member.username}`}</div>
-            <div className="w-20">{`${member.role}`}</div>
+                {renderFields(member)}
+              </div>
+            ))}
           </div>
         ))}
       </div>

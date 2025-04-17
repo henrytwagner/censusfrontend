@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Empty from './components/Empty';
 import ProtectedRoute from './components/ProtectedRoute';
 import Organization from './pages/Organization';
+import Contacts from './pages/Contacts';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,7 +32,7 @@ function App() {
             index
             element={
               <ProtectedRoute>
-                <Home />
+                <Contacts />
               </ProtectedRoute>
             }
           />
