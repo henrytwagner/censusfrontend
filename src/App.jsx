@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import OrgHome from './pages/OrgHome';
 import Landing from './pages/Landing';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
@@ -31,6 +32,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="organization/:orgId/home"
+            element={
+              <ProtectedRoute>
+                <OrgHome />
               </ProtectedRoute>
             }
           />

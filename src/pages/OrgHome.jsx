@@ -1,8 +1,11 @@
 import React from 'react';
 import ContactList from '../components/ContactList';
 import Empty from '../components/Empty';
+import { useParams } from 'react-router-dom';
 
-const Home = () => {
+const OrgHome = () => {
+  const { orgId } = useParams();
+
   const renderFields = (contact) => (
     <p className="personname truncate w-full text-left">
       {contact.first_name}{' '}
@@ -13,7 +16,7 @@ const Home = () => {
   return (
     <div className="flex">
       <ContactList
-        fetchUrl="/api/contacts"
+        fetchUrl={`/api/organizations/${orgId}/members`}
         groupByField="last_name"
         renderFields={renderFields}
       />
@@ -22,4 +25,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default OrgHome;

@@ -14,7 +14,7 @@ const groupBy = (array, getKey) => {
   }, {});
 };
 
-const ContactList = () => {
+const ContactList = ({ fetchUrl, groupByField, renderFields }) => {
   const authFetch = useAuthFetch();
 
   const [contacts, setContacts] = useState([]);
@@ -23,7 +23,7 @@ const ContactList = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await authFetch('/api/contacts'); //TODO: connect backend
+        const response = await authFetch(fetchUrl); //TODO: connect backend
         const data = await response.json();
         setContacts(data);
       } catch (err) {
@@ -32,7 +32,7 @@ const ContactList = () => {
     };
 
     fetchContacts();
-  }, []);
+  }, [fetchUrl]);
 
   /*TODO: make grouping by last visited (add to contact model)*/
   const groupedContacts = groupBy(contacts, (person) =>
@@ -70,12 +70,7 @@ const ContactList = () => {
                     setSelectedIndex(index);
                   }}
                 >
-                  <p className="personname truncate w-full text-left">
-                    {person.first_name}{' '}
-                    <span className="lastname font-bold">
-                      {person.last_name}
-                    </span>
-                  </p>
+                  {renderFields(person)}
                 </div>
               );
             })}
