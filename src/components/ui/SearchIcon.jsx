@@ -1,9 +1,13 @@
 import React from 'react';
-import '../styles/searchicon.css';
 
 const SearchIcon = () => {
   return (
-    <svg version="1.1" id="Capa_1" viewBox="0 0 488.4 488.4">
+    <svg
+      version="1.1"
+      id="Capa_1"
+      viewBox="0 0 488.4 488.4"
+      className="p-1 fill-black h-full aspect-square box-border"
+    >
       <g>
         <g>
           <path

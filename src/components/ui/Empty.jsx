@@ -1,9 +1,8 @@
 import React from 'react';
-import '../styles/empty.css';
 
 function Empty() {
   return (
-    <div className="empty">
+    <div className="flex-grow flex flex-col justify-start border border-gray-300 m-5">
       <div>EMPTY</div>
     </div>
   );

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/orgheader.css';
-import { useAuthFetch } from '../utils/authFetch';
-import sampleImage from '../assets/ContactsInvert.png';
+import { useAuthFetch } from '@utils/authFetch';
+import sampleImage from '@assets/images/ContactsInvert.png';
 
-const OrgHeader = ({ id }) => {
+const GroupBanner = ({ id }) => {
   const authFetch = useAuthFetch();
 
   const [organizationInfo, setOrganizationInfo] = useState({});
@@ -47,24 +46,30 @@ const OrgHeader = ({ id }) => {
   if (!organizationInfo || !finalImgSrc) return null;
 
   return (
-    <div className="org-header">
-      <div className="org-header-content">
-        <div className="org-image">
-          <div className="org-image">
-            {finalImgSrc ? (
-              <img src={finalImgSrc} alt="Org" />
-            ) : (
-              <div className="org-placeholder" />
-            )}
-          </div>
+    <div className="flex justify-center items-start w-1/2 rounded-2xl shadow-md">
+      <div className="flex items-center justify-start flex-1">
+        <div className="w-64 h-64 rounded-lg shadow-md overflow-hidden flex items-center justify-center">
+          {finalImgSrc ? (
+            <img
+              src={finalImgSrc}
+              alt="Org"
+              className="w-full h-full object-cover object-center"
+            />
+          ) : (
+            <div className="w-64 h-64" />
+          )}
         </div>
-        <div className="org-info">
-          <div className="org-title">{organizationInfo.name}</div>
-          <div className="org-desc">{organizationInfo.bio}</div>
+        <div className="flex flex-col justify-center items-start gap-1 h-24 px-6 flex-1">
+          <div className="text-gray-400 text-5xl font-light">
+            {organizationInfo.name}
+          </div>
+          <div className="text-gray-400 text-sm font-light leading-[1.15]">
+            {organizationInfo.bio}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default OrgHeader;
+export default GroupBanner;

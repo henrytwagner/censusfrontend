@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import HeaderNoAuth from '../components/HeaderNoAuth';
+import Footer from '@components/layout/Footer';
+import HeaderNoAuth from '@components/layout/HeaderNoAuth';
 
 const Landing = () => {
   return (

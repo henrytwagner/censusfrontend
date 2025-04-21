@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthFetch } from '../utils/authFetch';
-import '../styles/contactlist.css';
-import SearchBar from './SearchBar';
+import { useAuthFetch } from '../../utils/authFetch';
+import '@styles/contactlist.css';
+import SearchBar from '@components/ui/SearchBar';
 import { useSearchParams } from 'react-router-dom';
 
 const groupBy = (array, getKey) => {
@@ -15,7 +15,7 @@ const groupBy = (array, getKey) => {
   }, {});
 };
 
-const ContactList = ({ fetchUrl, groupByField, renderFields }) => {
+const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
   const authFetch = useAuthFetch();
   const [searchParams] = useSearchParams(); // Access query parameters
   const [contacts, setContacts] = useState([]);
@@ -87,4 +87,4 @@ const ContactList = ({ fetchUrl, groupByField, renderFields }) => {
   );
 };
 
-export default ContactList;
+export default ContactListSidebar;

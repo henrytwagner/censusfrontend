@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/orgstack.css';
-import { useAuthFetch } from '../utils/authFetch';
-import profileImage from '../assets/Headshot.png';
+import { useAuthFetch } from '@utils/authFetch';
+import profileImage from '@assets/images/Headshot.png';
 import { Link } from 'react-router-dom';
 
 function OrgStack() {
@@ -21,24 +20,24 @@ function OrgStack() {
     };
 
     fetchOrgs();
-  }, {});
+  }, []);
 
   return (
-    <div className="orgstack">
+    <div className="flex flex-row h-full">
       {orgs.map((org) => (
         <Link
           to={`/organization/${org.id}/`}
           key={org.id}
-          className="aspect-square m-0.5 hover:m-0 h-full rounded-md overflow-hidden"
+          className="aspect-square p-0.5 h-full box-border"
         >
           {org.photo_url ? (
             <img
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover object-center border border-gray-300 rounded-md"
               src={org.photo_url}
               alt=""
             />
           ) : (
-            <div className="w-full h-full bg-pink-500 text-white text-xl font-bold text-center content-center">
+            <div className="w-full h-full bg-pink-500 text-white text-xl font-bold flex items-center justify-center rounded-md border border-gray-300">
               {org.name}
             </div>
           )}

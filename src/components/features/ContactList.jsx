@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthFetch } from '../utils/authFetch';
-import SearchBar from './SearchBar';
+import { useAuthFetch } from '../../utils/authFetch';
+import SearchBar from '../ui/SearchBar';
 import { useNavigate } from 'react-router-dom';
 
 const groupBy = (array, getKey) => {

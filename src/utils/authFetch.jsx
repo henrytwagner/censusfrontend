@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '@state/AuthContext';
 
 export const useAuthFetch = () => {
   const { accessToken, refreshAccessToken, logout } = useContext(AuthContext);

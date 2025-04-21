@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactList from '../components/ContactList';
-import Empty from '../components/Empty';
+import Empty from '../components/ui/Empty';
+import ContactListSidebar from '../components/features/ContactListSidebar';
 
 const Home = () => {
   const renderFields = (contact) => (
@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div className="flex">
-      <ContactList
+      <ContactListSidebar
         fetchUrl="/api/contacts"
         groupByField="last_name"
         renderFields={renderFields}

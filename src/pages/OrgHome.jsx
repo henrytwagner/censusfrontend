@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactList from '../components/ContactList';
-import Empty from '../components/Empty';
+import ContactListSidebar from '../components/features/ContactListSidebar';
+import Empty from '../components/ui/Empty';
 import { useParams } from 'react-router-dom';
 
 const OrgHome = () => {
@@ -15,7 +15,7 @@ const OrgHome = () => {
 
   return (
     <div className="flex">
-      <ContactList
+      <ContactListSidebar
         fetchUrl={`/api/organizations/${orgId}/members`}
         groupByField="last_name"
         renderFields={renderFields}

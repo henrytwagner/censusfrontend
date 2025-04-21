@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import OrgStack from './OrgStack';
-import { useAuthFetch } from '../utils/authFetch';
-import contactsImage from '../assets/ContactsInvert.png';
+import OrgStack from '@components/ui/OrgStack';
+import { useAuthFetch } from '@utils/authFetch';
+import contactsImage from '@assets/images/ContactsInvert.png';
 
 function Header() {
   const authFetch = useAuthFetch();

@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginForm from '../components/LoginForm';
-import HeaderNoAuth from '../components/HeaderNoAuth';
+import LoginForm from '@components/forms/LoginForm';
+import HeaderNoAuth from '@components/layout/HeaderNoAuth';
 
 const Login = () => {
   return (

@@ -1,7 +1,6 @@
 import React from 'react';
-import '../styles/organization.css';
-import OrgHeader from '../components/OrgHeader';
-import OrgMemberList from '../components/OrgMemberList';
+import GroupBanner from '@components/features/GroupBanner';
+import ContactList from '@components/features/ContactList';
 import { useParams } from 'react-router-dom';
 
 const Organization = () => {
@@ -32,9 +31,9 @@ const Organization = () => {
     </>
   );
   return (
-    <div className="org-page">
-      <OrgHeader id={id} />
-      <OrgMemberList
+    <div className="flex flex-col items-center gap-6 py-12 w-full box-border ">
+      <GroupBanner id={id} />
+      <ContactList
         fetchUrl={`/api/organizations/${id}/members`}
         groupByField="last_name"
         renderFields={renderFields}

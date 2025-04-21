@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ContactImage from '/src/assets/Contacts.png';
+import ContactImage from '/src/assets/images/Contacts.png';
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -89,7 +89,7 @@ const LoginForm = ({ onLogin }) => {
         {/* Right side: Image */}
         <div className="hidden md:block md:w-90">
           <img
-            src="/src/assets/Contacts.png"
+            src="/src/assets/images/Contacts.png"
             alt="Login Illustration"
             className="object-cover h-full w-full"
           />

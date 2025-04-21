@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import OrgStack from './OrgStack';
-import { useAuthFetch } from '../utils/authFetch';
+import { useAuthFetch } from '@utils/authFetch';
 
-function Header() {
+function HeaderNoAuth() {
   const authFetch = useAuthFetch();
   const [me, setMe] = useState({});
 
@@ -55,4 +54,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderNoAuth;
