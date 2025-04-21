@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthFetch } from '../utils/authFetch';
 import SearchBar from './SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 const groupBy = (array, getKey) => {
   return array.reduce((result, item) => {
@@ -13,8 +14,14 @@ const groupBy = (array, getKey) => {
   }, {});
 };
 
-const OrgMemberList = ({ fetchUrl, groupByField, renderFields }) => {
+const OrgMemberList = ({
+  fetchUrl,
+  groupByField,
+  renderFields,
+  navigateTo,
+}) => {
   const authFetch = useAuthFetch();
+  const navigate = useNavigate();
 
   const [members, setMembers] = useState([]);
 
@@ -39,6 +46,14 @@ const OrgMemberList = ({ fetchUrl, groupByField, renderFields }) => {
 
   const sortedKeys = Object.keys(groupedMembers).sort();
 
+  const handleMemberClick = (member) => {
+    if (navigateTo) {
+      navigate(`${navigateTo}?selectedMemberId=${member.id}`); // Pass the selected ID as a query parameter
+    } else {
+      console.log('Member clicked:', member);
+    }
+  };
+
   return (
     <div className="w-2/4 h-fit flex flex-col gap-4 text-lg">
       <SearchBar />
@@ -56,24 +71,10 @@ const OrgMemberList = ({ fetchUrl, groupByField, renderFields }) => {
             </div> */}
             {groupedMembers[key].map((member) => (
               <div
-                key={member.username}
+                key={member.id}
                 className="flex items-center justify-start gap-4 px-2 py-0"
+                onClick={() => handleMemberClick(member)}
               >
-                <div className="rounded-full h-12 aspect-square overflow-hidden m-2">
-                  {member.profile_image_url ? (
-                    <img
-                      className="h-full w-full object-cover object-center"
-                      src={member.profile_image_url}
-                      alt=""
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-blue-700 text-white text-xl font-bold flex items-center justify-center">
-                      {member.first_name && member.last_name
-                        ? member.first_name[0] + member.last_name[0]
-                        : ''}
-                    </div>
-                  )}
-                </div>
                 {renderFields(member)}
               </div>
             ))}

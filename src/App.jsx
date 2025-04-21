@@ -37,6 +37,14 @@ function App() {
             }
           />
           <Route
+            path="contacts"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="organization/:orgId/home"
             element={
               <ProtectedRoute>
