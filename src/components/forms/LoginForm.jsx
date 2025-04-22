@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ContactImage from '/src/assets/images/Contacts.png';
+import { AuthContext } from '@state/AuthContext';
 
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('api/token/', {
+      const response = await fetch('/api/token/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,14 +27,14 @@ const LoginForm = ({ onLogin }) => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.detail || 'Login failed');
+        const friendlyMessage = data?.detail || 'Invalid username or password.';
+        throw new Error(friendlyMessage);
       }
 
       // Store tokens (for demo, using localStorage; consider a more secure approach for production)
-      localStorage.setItem('access', data.access);
-      localStorage.setItem('refresh', data.refresh);
-
-      onLogin?.(data.access);
+      setLoading(true);
+      login(data.access, data.refresh);
+      setLoading(false);
       navigate('/');
     } catch (err) {
       setError(err.message);
@@ -51,6 +55,7 @@ const LoginForm = ({ onLogin }) => {
           <div className="flex flex-col">
             <label className="mb-1 font-semibold">Username</label>
             <input
+              autoFocus
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -80,9 +85,10 @@ const LoginForm = ({ onLogin }) => {
 
           <button
             type="submit"
+            disabled={loading}
             className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
           >
-            Login
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
