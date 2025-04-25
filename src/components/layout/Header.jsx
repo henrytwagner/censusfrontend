@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import OrgStack from '@components/ui/OrgStack';
 import { useAuthFetch } from '@utils/authFetch';
 import contactsImage from '@assets/images/ContactsInvert.png';
+import HomeIcon from '../ui/HomeIcon';
 
 function Header() {
   const authFetch = useAuthFetch();
@@ -25,16 +26,15 @@ function Header() {
   return (
     <header className="flex justify-between items-center p-4 border-b border-gray-200 flex-shrink-0">
       {/* Left section */}
-      <div className="flex justify-start items-center flex-1 h-20">
+      <div className="flex justify-start items-center flex-1 h-20 gap-4">
         <Link
           to={'/'}
-          className="aspect-square m-0.5 hover:m-0 h-full rounded-md overflow-hidden"
+          //   className="aspect-square h-full flex items-center justify-center border-r-2"
+          // >
+          //   <HomeIcon />
+          className="w-fit pr-4 h-full flex items-center justify-center border-r-2"
         >
-          <img
-            className="h-full w-full object-cover object-center"
-            src={contactsImage}
-            alt=""
-          />
+          CONTACTS
         </Link>
         {me && <OrgStack />}
       </div>
@@ -44,7 +44,10 @@ function Header() {
       </div>
       {/* Right section */}
       <div className="flex justify-end items-center flex-1 h-[50px] gap-2">
-        <div className="rounded-full h-full aspect-square overflow-hidden">
+        <Link
+          to={'/profile'}
+          className="rounded-full h-full aspect-square overflow-hidden"
+        >
           {me.profile_image_url ? (
             <img
               className="h-full w-full object-cover object-center"
@@ -58,7 +61,7 @@ function Header() {
                 : ''}
             </div>
           )}
-        </div>
+        </Link>
         <p className="text-5xl">☰</p>
       </div>
     </header>
