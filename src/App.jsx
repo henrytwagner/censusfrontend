@@ -13,6 +13,7 @@ import ProtectedRoute from '@components/routing/ProtectedRoute';
 import Organization from '@pages/Organization';
 import Contacts from '@pages/Contacts';
 import Logout from '@components/routing/Logout';
+import Profile from './pages/Profile';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -59,6 +60,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />

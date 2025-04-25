@@ -31,7 +31,6 @@ const LoginForm = ({ onLogin }) => {
         throw new Error(friendlyMessage);
       }
 
-      // Store tokens (for demo, using localStorage; consider a more secure approach for production)
       setLoading(true);
       login(data.access, data.refresh);
       setLoading(false);
