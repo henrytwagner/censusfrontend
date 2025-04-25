@@ -4,9 +4,17 @@ import ContactList from '@components/features/ContactList';
 import { useParams } from 'react-router-dom';
 
 const Contacts = () => {
+  const headerFields = (
+    <>
+      <div className="w-12 shrink-0 m-2"></div>
+      <div className="flex-1/2 font-bold">Name</div>
+      <div className="flex-1/2 font-bold">Username</div>
+    </>
+  );
+
   const renderFields = (member) => (
     <>
-      <div className="rounded-full h-12 aspect-square overflow-hidden m-2">
+      <div className="rounded-full h-12 w-12 shrink-0 overflow-hidden m-2">
         {member.profile_image_url ? (
           <img
             className="h-full w-full object-cover object-center"
@@ -21,18 +29,20 @@ const Contacts = () => {
           </div>
         )}
       </div>
-      <div className="w-20">{member.first_name}</div>
-      <div className="w-30 font-bold">{member.last_name}</div>
-      <div className="w-40 text-gray-500">{member.username}</div>
-      <div className="w-40 text-gray-500">{member.id}</div>
+      <div className="flex-1/2 truncate">
+        {member.first_name}{' '}
+        <span className="font-bold">{member.last_name}</span>
+      </div>
+      <div className="flex-1/2 text-gray-500">{member.username}</div>
     </>
   );
   return (
-    <div className="flex flex-col items-center gap-6 py-12 w-full box-border">
+    <div className="flex flex-col items-center gap-6 py-12 w-full box-border overflow-y-auto">
       <GroupBanner />
       <ContactList
         fetchUrl={`/api/contacts`}
         groupByField="last_name"
+        headerFields={headerFields}
         renderFields={renderFields}
         navigateTo="/contacts"
       />

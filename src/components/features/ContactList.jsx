@@ -14,9 +14,10 @@ const groupBy = (array, getKey) => {
   }, {});
 };
 
-const OrgMemberList = ({
+const ContactList = ({
   fetchUrl,
   groupByField,
+  headerFields,
   renderFields,
   navigateTo,
 }) => {
@@ -57,23 +58,17 @@ const OrgMemberList = ({
   return (
     <div className="w-2/4 h-fit flex flex-col gap-4 text-lg">
       <SearchBar />
-      <div className="flex justify-start px-2 py-0.5 border-b-2">
-        <div className="w-20 font-bold">First</div>
-        <div className="w-30 font-bold">Last</div>
-        <div className="w-40 font-bold">Username</div>
-        <div className="w-20 font-bold">Role</div>
+      <div className="flex items-center justify-start gap-4 px-2 py-0 border-b-2">
+        {headerFields}
       </div>
       <div>
         {sortedKeys.map((key) => (
           <div key={key}>
-            {/* <div className="font-bold bg-gray-100 px-2 py-1 rounded-md mb-2">
-              {key}
-            </div> */}
             {groupedMembers[key].map((member) => (
               <div
                 key={member.id}
                 className="flex items-center justify-start gap-4 px-2 py-0"
-                onClick={() => handleMemberClick(member)}
+                onDoubleClick={() => handleMemberClick(member)}
               >
                 {renderFields(member)}
               </div>
@@ -85,4 +80,4 @@ const OrgMemberList = ({
   );
 };
 
-export default OrgMemberList;
+export default ContactList;
