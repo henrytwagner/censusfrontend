@@ -6,12 +6,24 @@ import { useParams } from 'react-router-dom';
 const OrgHome = () => {
   const { orgId } = useParams();
 
-  const renderFields = (contact) => (
+  const renderFields = (member) => (
     <>
       <div className="personname truncate w-full text-left">
-        {contact.first_name}{' '}
-        <span className="lastname font-bold">{contact.last_name}</span>
+        {member.first_name}{' '}
+        <span className="lastname font-bold">{member.last_name}</span>
       </div>
+
+      {member.status === 'active' ? (
+        <>
+          {/* small dot, only below sm */}
+          <div className="inline-block w-3 h-3 rounded-full border-2 text-emerald-700 bg-emerald-200" />
+        </>
+      ) : (
+        <>
+          {/* small dot, only below sm */}
+          <div className="inline-block w-3 h-3 rounded-full border-2 text-red-700 bg-red-200" />
+        </>
+      )}
     </>
   );
 
