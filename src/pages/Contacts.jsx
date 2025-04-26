@@ -7,8 +7,8 @@ const Contacts = () => {
   const headerFields = (
     <>
       <div className="w-12 shrink-0 m-2"></div>
-      <div className="flex-1/2 font-bold">Name</div>
-      <div className="flex-1/2 font-bold">Username</div>
+      <div className="flex-1/2 truncate font-bold">Contact</div>
+      <div className="flex-1/2 truncate font-bold">Username</div>
     </>
   );
 
@@ -33,7 +33,7 @@ const Contacts = () => {
         {member.first_name}{' '}
         <span className="font-bold">{member.last_name}</span>
       </div>
-      <div className="flex-1/2 text-gray-500">{member.username}</div>
+      <div className="flex-1/2 truncate text-gray-500">{member.username}</div>
     </>
   );
   return (

@@ -61,21 +61,19 @@ const ContactList = ({
       <div className="flex items-center justify-start gap-4 px-2 py-0 border-b-2">
         {headerFields}
       </div>
-      <div>
-        {sortedKeys.map((key) => (
-          <div key={key}>
-            {groupedMembers[key].map((member) => (
-              <div
-                key={member.id}
-                className="flex items-center justify-start gap-4 px-2 py-0"
-                onDoubleClick={() => handleMemberClick(member)}
-              >
-                {renderFields(member)}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      {sortedKeys.map((key) => (
+        <div key={key}>
+          {groupedMembers[key].map((member) => (
+            <div
+              key={member.id}
+              className="flex items-center justify-start gap-4 px-2 py-0"
+              onDoubleClick={() => handleMemberClick(member)}
+            >
+              {renderFields(member)}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

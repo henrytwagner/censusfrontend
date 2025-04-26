@@ -4,10 +4,12 @@ import ContactListSidebar from '../components/features/ContactListSidebar';
 
 const Home = () => {
   const renderFields = (contact) => (
-    <p className="personname truncate w-full text-left">
-      {contact.first_name}{' '}
-      <span className="lastname font-bold">{contact.last_name}</span>
-    </p>
+    <>
+      <div className="personname truncate w-full text-left">
+        {contact.first_name}{' '}
+        <span className="lastname font-bold">{contact.last_name}</span>
+      </div>
+    </>
   );
 
   return (

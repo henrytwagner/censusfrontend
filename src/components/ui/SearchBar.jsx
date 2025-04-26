@@ -4,7 +4,7 @@ import SearchIcon from '@components/ui/SearchIcon';
 const SearchBar = () => {
   return (
     <form
-      className="flex w-full h-6 items-center gap-5 rounded-md bg-gray-200 focus-within:outline focus-within:outline-2 focus-within:outline-blue-500"
+      className="flex w-full h-6 items-center gap-5 rounded-md bg-gray-200 focus-within:outline-2 focus-within:outline-blue-500"
       role="search"
     >
       <label

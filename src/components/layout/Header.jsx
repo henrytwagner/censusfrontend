@@ -26,22 +26,25 @@ function Header() {
   return (
     <header className="flex justify-between items-center p-4 border-b border-gray-200 flex-shrink-0">
       {/* Left section */}
-      <div className="flex justify-start items-center flex-1 h-20 gap-4">
+      <div className="flex justify-start items-center flex-1 h-fit gap-4">
         <Link
           to={'/'}
           //   className="aspect-square h-full flex items-center justify-center border-r-2"
           // >
           //   <HomeIcon />
-          className="w-fit pr-4 h-full flex items-center justify-center border-r-2"
+          className="w-fit pr-4 h-12 flex items-center justify-center border-r-1 border-gray-500"
         >
           CONTACTS
         </Link>
         {me && <OrgStack />}
       </div>
       {/* Center section */}
-      <div className="flex justify-center items-center flex-1 h-[50px] text-[40px] font-thin">
+      <Link
+        to={'/landing'}
+        className="flex justify-center items-center flex-1 h-[50px] text-[40px] font-thin"
+      >
         CENSUS
-      </div>
+      </Link>
       {/* Right section */}
       <div className="flex justify-end items-center flex-1 h-[50px] gap-2">
         <Link

@@ -50,10 +50,7 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
   const sortedKeys = Object.keys(groupedContacts).sort();
 
   return (
-    <div
-      className="contactlist border-r border-gray-300 flex flex-col p-6 gap-2.5 h-full"
-      style={{ width: 'clamp(200px, 20%, 250px)' }}
-    >
+    <div className="contactlist border-r border-gray-300 flex flex-col p-6 gap-2.5 h-full w-50 sm:w-60">
       <SearchBar />
       <div className="contactlist-scrollable w-full overflow-y-auto pt-2.5 pb-7.5 scrollbar-hide">
         {/* TODO: make this not just character, if sorting contacts by recent want words */}
@@ -61,7 +58,7 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
           <div key={key}>
             <div
               style={{ boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.12)' }}
-              className="characterheader bg-white items-center flex h-5 px-2 py-0.5 shrink-0 font-bold rounded-md"
+              className="characterheader bg-white items-center flex h-6 px-2 py-0.5 shrink-0 font-bold rounded-md"
             >
               {key}
             </div>
@@ -70,9 +67,8 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
               return (
                 <div
                   key={member.id}
-                  className={`person cursor-default flex items-center py-0.5 px-2 h-7.5 flex-shrink-0 self-stretch justify-start rounded-md border-t border-gray-200 hover:bg-black/1.5 ${member.id === selectedMember ? 'selected border-l-4 border-l-blue-500 bg-black/5' : ''}`}
+                  className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 hover:bg-black/1.5 ${member.id === selectedMember ? 'selected border-l-4 border-l-blue-500 bg-black/5' : ''}`}
                   onClick={() => {
-                    console.log('Selected Member:', member.id); // Debugging
                     setSelectedMember(member.id);
                   }}
                 >

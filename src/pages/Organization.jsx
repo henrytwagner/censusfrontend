@@ -9,9 +9,9 @@ const Organization = () => {
   const headerFields = (
     <>
       <div className="w-12 shrink-0 m-2"></div>
-      <div className="flex-1/3 font-bold">Name</div>
-      <div className="flex-1/3 font-bold">Username</div>
-      <div className="flex-1/3 font-bold">Role</div>
+      <div className="flex-1/3 truncate font-bold">Member</div>
+      <div className="flex-1/3 truncate font-bold">Username</div>
+      <div className="flex-1/3 truncate font-bold">Role</div>
     </>
   );
   const renderFields = (member) => (
@@ -31,12 +31,12 @@ const Organization = () => {
           </div>
         )}
       </div>
-      <div className="flex-1/3">
+      <div className="flex-1/3 truncate">
         {member.first_name}{' '}
         <span className="font-bold">{member.last_name}</span>
       </div>
-      <div className="flex-1/3 w-40 text-gray-500">{member.username}</div>
-      <div className="flex-1/3 w-20">{member.role}</div>
+      <div className="flex-1/3 truncate text-gray-500">{member.username}</div>
+      <div className="flex-1/3 truncate">{member.role}</div>
     </>
   );
   return (
