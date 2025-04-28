@@ -19,18 +19,13 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
   const authFetch = useAuthFetch();
   const [searchParams, setSearchParams] = useSearchParams(); // Access query parameters
   const [contacts, setContacts] = useState([]);
-  const selectedMember = searchParams.get('selectedMemberId') || '';
+  const contact = searchParams.get('contactId') || '';
   useEffect(() => {
     const fetchContacts = async () => {
       try {
         const response = await authFetch(fetchUrl); //TODO: connect backend
         const data = await response.json();
         setContacts(data);
-
-        const selectedMemberId = location.state?.selectedMemberId;
-        if (selectedMemberId) {
-          setSelectedMember(selectedMemberId);
-        }
       } catch (err) {
         console.error('Failed to load conatacts:', err);
       }
@@ -47,7 +42,7 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
   const sortedKeys = Object.keys(groupedContacts).sort();
 
   return (
-    <div className="contactlist border-r border-gray-300 flex flex-col p-6 gap-2.5 h-full w-50 sm:w-60">
+    <div className="contactlist border-r border-gray-300 flex flex-col shrink-0 p-6 gap-2.5 h-full w-50 sm:w-60">
       <SearchBar />
       <div className="contactlist-scrollable w-full overflow-y-auto pt-2.5 pb-7.5 scrollbar-hide">
         {/* TODO: make this not just character, if sorting contacts by recent want words */}
@@ -64,9 +59,9 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
               return (
                 <div
                   key={member.id}
-                  className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 hover:bg-black/1.5 ${member.id === selectedMember ? 'selected border-l-4 border-l-blue-500 bg-black/5' : ''}`}
+                  className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 hover:bg-black/1.5 ${member.id === contact ? 'selected border-l-4 border-l-blue-500 bg-black/5' : ''}`}
                   onClick={() => {
-                    setSearchParams({ selectedMemberId: member.id });
+                    setSearchParams({ contactId: member.id });
                   }}
                 >
                   {renderFields(member)}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Empty from '../components/ui/Empty';
 import ContactListSidebar from '../components/features/ContactListSidebar';
+import Contact from '@components/features/Contact';
 
 const Home = () => {
   const renderFields = (contact) => (
@@ -19,7 +20,7 @@ const Home = () => {
         groupByField="last_name"
         renderFields={renderFields}
       />
-      <Empty />
+      <Contact />
     </div>
   );
 };

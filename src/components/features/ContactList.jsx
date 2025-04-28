@@ -49,7 +49,7 @@ const ContactList = ({
 
   const handleMemberClick = (member) => {
     if (navigateTo) {
-      navigate(`${navigateTo}?selectedMemberId=${member.id}`); // Pass the selected ID as a query parameter
+      navigate(`${navigateTo}?contactId=${member.id}`); // Pass the selected ID as a query parameter
     } else {
       console.log('Member clicked:', member);
     }

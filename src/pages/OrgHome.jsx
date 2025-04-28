@@ -2,6 +2,7 @@ import React from 'react';
 import ContactListSidebar from '../components/features/ContactListSidebar';
 import Empty from '../components/ui/Empty';
 import { useParams } from 'react-router-dom';
+import Contact from '@components/features/Contact';
 
 const OrgHome = () => {
   const { orgId } = useParams();
@@ -34,7 +35,7 @@ const OrgHome = () => {
         groupByField="last_name"
         renderFields={renderFields}
       />
-      <Empty />
+      <Contact />
     </div>
   );
 };

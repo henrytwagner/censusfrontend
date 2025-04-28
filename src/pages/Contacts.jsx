@@ -14,7 +14,7 @@ const Contacts = () => {
 
   const renderFields = (member) => (
     <>
-      {/* Profile Image */}
+      {/* Profile Image         TODO: Make this a component*/}
       <div className="rounded-full h-12 w-12 shrink-0 overflow-hidden m-2">
         {member.profile_image_url ? (
           <img
