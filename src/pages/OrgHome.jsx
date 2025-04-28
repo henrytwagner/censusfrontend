@@ -16,12 +16,12 @@ const OrgHome = () => {
       {member.status === 'active' ? (
         <>
           {/* small dot, only below sm */}
-          <div className="inline-block w-3 h-3 rounded-full border-2 text-emerald-700 bg-emerald-200" />
+          <div className="inline-block w-2 h-2 rounded-full border-1 text-emerald-700 bg-emerald-200" />
         </>
       ) : (
         <>
           {/* small dot, only below sm */}
-          <div className="inline-block w-3 h-3 rounded-full border-2 text-red-700 bg-red-200" />
+          <div className="inline-block w-2 h-2 rounded-full border-1 text-red-700 bg-red-200" />
         </>
       )}
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthFetch } from '../../utils/authFetch';
-import SearchBar from '../ui/SearchBar';
+import SearchBar from '@components/ui/SearchBar';
 import { useNavigate } from 'react-router-dom';
 
 const groupBy = (array, getKey) => {
@@ -58,22 +58,24 @@ const ContactList = ({
   return (
     <div className="w-150 lg:w-2/3 h-fit flex flex-col gap-4 text-lg">
       <SearchBar />
-      <div className="flex items-center justify-start gap-4 px-2 py-0 border-b-2">
-        {headerFields}
-      </div>
-      {sortedKeys.map((key) => (
-        <div key={key}>
-          {groupedMembers[key].map((member) => (
-            <div
-              key={member.id}
-              className="flex items-center justify-start gap-4 px-2 py-0"
-              onDoubleClick={() => handleMemberClick(member)}
-            >
-              {renderFields(member)}
-            </div>
-          ))}
+      <div>
+        <div className="flex items-center justify-start gap-4 px-2 py-0 border-b-2 mb-2">
+          {headerFields}
         </div>
-      ))}
+        {sortedKeys.map((key) => (
+          <div key={key}>
+            {groupedMembers[key].map((member) => (
+              <div
+                key={member.id}
+                className="flex items-center justify-start gap-4 px-2 py-0"
+                onDoubleClick={() => handleMemberClick(member)}
+              >
+                {renderFields(member)}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

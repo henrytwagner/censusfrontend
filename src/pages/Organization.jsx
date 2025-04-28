@@ -10,13 +10,15 @@ const Organization = () => {
     <>
       <div className="w-12 shrink-0 m-2"></div>
       <div className="flex-1/4 truncate font-bold">Member</div>
-      <div className="flex-1/4 truncate font-bold">Username</div>
+      <div className="flex-1/4 truncate font-bold">Email</div>
       <div className="flex-1/4 truncate font-bold">Role</div>
+      <div className="flex-1/4 truncate font-bold">Joined</div>
       <div className="flex-1/4 truncate font-bold">Status</div>
     </>
   );
   const renderFields = (member) => (
     <>
+      {/* Profile Image */}
       <div className="rounded-full h-12 w-12 shrink-0 overflow-hidden m-2">
         {member.profile_image_url ? (
           <img
@@ -32,23 +34,48 @@ const Organization = () => {
           </div>
         )}
       </div>
-      <div className="flex-1/4 truncate">
-        {member.first_name}{' '}
-        <span className="font-bold">{member.last_name}</span>
+
+      {/* User */}
+      <div className="flex-1/4 flex flex-col truncate">
+        <div>
+          {member.first_name}{' '}
+          <span className="font-bold">{member.last_name}</span>
+        </div>
+        <div className="text-xs ">{member.username}</div>
       </div>
-      <div className="flex-1/4 truncate text-gray-500">{member.username}</div>
-      <div className="flex-1/4 truncate">{member.role}</div>
-      <div className="flex-1/4 truncate flex justify-start gap-2 items-center">
+
+      {/* Contact */}
+      <div className="flex-1/4 flex flex-col justify-center min-w-0 text-xs gap-1">
+        <div className="w-full truncate">{member.email}</div>
+        {/* TODO: add phone number */}
+        <div className="w-fill text-xs ">{member.phone}</div>
+      </div>
+
+      {/* Role */}
+      <div className="flex-1/4 truncate text-sm">{member.role}</div>
+
+      {/* Joined */}
+      <div className="flex-1/4 truncate text-sm">
+        {member.joined_at
+          ? new Date(member.joined_at).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+            })
+          : '-'}
+      </div>
+
+      {/* Status */}
+      <div className="flex-1/4 truncate flex justify-start gap-2 items-center text-sm">
         {member.status === 'active' ? (
           <>
             {/* small dot, only below sm */}
-            <div className="inline-block w-3 h-3 rounded-full border-2 text-emerald-700 bg-emerald-200 text-" />
+            <div className="inline-block w-2 h-2 rounded-full border-1 text-emerald-700 bg-emerald-200 text-" />
             <div className="text-emerald-700 md:inline-flex">Active</div>
           </>
         ) : (
           <>
             {/* small dot, only below sm */}
-            <div className="inline-block w-3 h-3 rounded-full border-2 text-red-700 bg-red-200" />
+            <div className="inline-block w-2 h-2 rounded-full border-1 text-red-700 bg-red-200" />
             <div className="text-red-700 md:inline-flex">Inactive</div>
           </>
         )}

@@ -43,7 +43,7 @@ const GroupBanner = ({ id }) => {
     img.onerror = () => setFinalImgSrc(sampleImage);
   }, [organizationInfo]);
 
-  if (!organizationInfo || !finalImgSrc) return null;
+  // if (!organizationInfo || !finalImgSrc) return null; // Commented to reduce glitch in between contact and org page
 
   return (
     <div className="flex justify-center items-start w-1/2 rounded-2xl shadow-md">

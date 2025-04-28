@@ -1,19 +1,20 @@
 import React from 'react';
 import GroupBanner from '@components/features/GroupBanner';
 import ContactList from '@components/features/ContactList';
-import { useParams } from 'react-router-dom';
 
 const Contacts = () => {
   const headerFields = (
     <>
       <div className="w-12 shrink-0 m-2"></div>
-      <div className="flex-1/2 truncate font-bold">Contact</div>
-      <div className="flex-1/2 truncate font-bold">Username</div>
+      <div className="flex-1/3 truncate font-bold">Contact</div>
+      <div className="flex-1/3 truncate font-bold">Contact Points</div>
+      <div className="flex-1/3 truncate font-bold">Added</div>
     </>
   );
 
   const renderFields = (member) => (
     <>
+      {/* Profile Image */}
       <div className="rounded-full h-12 w-12 shrink-0 overflow-hidden m-2">
         {member.profile_image_url ? (
           <img
@@ -29,11 +30,32 @@ const Contacts = () => {
           </div>
         )}
       </div>
-      <div className="flex-1/2 truncate">
-        {member.first_name}{' '}
-        <span className="font-bold">{member.last_name}</span>
+
+      {/* User */}
+      <div className="flex-1/3 min-w-0 flex flex-col ">
+        <div className="w-full truncate">
+          {member.first_name}{' '}
+          <span className="font-bold">{member.last_name}</span>
+        </div>
+        <div className="text-xs ">{member.username}</div>
       </div>
-      <div className="flex-1/2 truncate text-gray-500">{member.username}</div>
+
+      {/* Contact */}
+      <div className="flex-1/3 flex flex-col justify-center min-w-0 text-xs gap-1">
+        <div className="w-full truncate">{member.email}</div>
+        {/* TODO: add phone number */}
+        <div className="w-fill text-xs ">{member.phone}</div>
+      </div>
+
+      {/* Added */}
+      <div className="flex-1/3 truncate text-sm">
+        {member.created_at
+          ? new Date(member.created_at).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+            })
+          : '-'}
+      </div>
     </>
   );
   return (
