@@ -17,12 +17,9 @@ const groupBy = (array, getKey) => {
 
 const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
   const authFetch = useAuthFetch();
-  const [searchParams] = useSearchParams(); // Access query parameters
+  const [searchParams, setSearchParams] = useSearchParams(); // Access query parameters
   const [contacts, setContacts] = useState([]);
-  const [selectedMember, setSelectedMember] = useState(
-    searchParams.get('selectedMemberId') || ''
-  );
-
+  const selectedMember = searchParams.get('selectedMemberId') || '';
   useEffect(() => {
     const fetchContacts = async () => {
       try {
@@ -69,7 +66,7 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
                   key={member.id}
                   className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 hover:bg-black/1.5 ${member.id === selectedMember ? 'selected border-l-4 border-l-blue-500 bg-black/5' : ''}`}
                   onClick={() => {
-                    setSelectedMember(member.id);
+                    setSearchParams({ selectedMemberId: member.id });
                   }}
                 >
                   {renderFields(member)}
