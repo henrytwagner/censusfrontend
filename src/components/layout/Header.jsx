@@ -32,18 +32,23 @@ function Header() {
           //   className="aspect-square h-full flex items-center justify-center border-r-2"
           // >
           //   <HomeIcon />
-          className="w-fit pr-4 h-12 flex items-center justify-center border-r-1 border-gray-500"
+
+          //   className="w-fit pr-4 h-12 flex items-center justify-center border-r-1 border-gray-500"
+          // >
+          //   CONTACTS
+
+          className="w-16 pr-4 h-12 flex items-center justify-center border-r-1 border-gray-500"
         >
-          CONTACTS
+          <img className="" src="/censusIcon.png" alt="" />
         </Link>
         {me && <OrgStack />}
       </div>
       {/* Center section */}
       <Link
         to={'/landing'}
-        className="flex justify-center items-center flex-1 h-[50px] text-[40px] font-thin"
+        className="flex justify-center shrink-0 items-center flex-1 h-[50px] text-[40px] font-thin"
       >
-        CENSUS
+        <img className="h-6 shrink-0" src="/censusLogo.png" alt="" />
       </Link>
       {/* Right section */}
       <div className="flex justify-end items-center flex-1 h-[50px] gap-2">

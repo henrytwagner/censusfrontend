@@ -59,8 +59,11 @@ const Contacts = () => {
     </>
   );
   return (
-    <div className="flex flex-col items-center gap-6 py-12 w-full box-border overflow-y-auto">
+    <div className="flex flex-col items-center gap-2 py-6 w-full box-border overflow-y-auto">
       {/* <GroupBanner /> */}
+      {/* <div className="w-150 lg:w-2/3 h-fit text-[40px] font-thin text-left">
+        CONTACTS
+      </div> */}
       <ContactList
         fetchUrl={`/api/contacts`}
         groupByField="last_name"
