@@ -6,9 +6,9 @@ const Contacts = () => {
   const headerFields = (
     <>
       <div className="w-12 shrink-0 m-2"></div>
-      <div className="flex-1/3 truncate font-bold">Contact</div>
-      <div className="flex-1/3 truncate font-bold">Contact Points</div>
-      <div className="flex-1/3 truncate font-bold">Added</div>
+      <div className="flex-1/3 text-sm truncate">Contact</div>
+      <div className="flex-1/3 text-sm truncate">Contact Points</div>
+      <div className="flex-1/3 text-sm truncate">Added</div>
     </>
   );
 

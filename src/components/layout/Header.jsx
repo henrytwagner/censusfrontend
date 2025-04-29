@@ -39,7 +39,7 @@ function Header() {
 
           className="w-16 pr-4 h-12 flex items-center justify-center border-r-1 border-gray-500"
         >
-          <img className="" src="/censusIcon.png" alt="" />
+          <img className="" src="/censusIcon.003.png" alt="" />
         </Link>
         {me && <OrgStack />}
       </div>
@@ -48,7 +48,7 @@ function Header() {
         to={'/landing'}
         className="flex justify-center shrink-0 items-center flex-1 h-[50px] text-[40px] font-thin"
       >
-        <img className="h-6 shrink-0" src="/censusLogo.png" alt="" />
+        <img className="h-6 shrink-0" src="/censusLogo.002.png" alt="" />
       </Link>
       {/* Right section */}
       <div className="flex justify-end items-center flex-1 h-[50px] gap-2">

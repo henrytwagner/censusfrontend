@@ -9,11 +9,11 @@ const Organization = () => {
   const headerFields = (
     <>
       <div className="w-12 shrink-0 m-2"></div>
-      <div className="flex-1/4 truncate font-bold">Member</div>
-      <div className="flex-1/4 truncate font-bold">Email</div>
-      <div className="flex-1/4 truncate font-bold">Role</div>
-      <div className="flex-1/4 truncate font-bold">Joined</div>
-      <div className="flex-1/4 truncate font-bold">Status</div>
+      <div className="flex-1/4 truncate text-sm">Member</div>
+      <div className="flex-1/4 truncate text-sm">Email</div>
+      <div className="flex-1/4 truncate text-sm">Role</div>
+      <div className="flex-1/4 truncate text-sm">Joined</div>
+      <div className="flex-1/4 truncate text-sm">Status</div>
     </>
   );
   const renderFields = (member) => (
