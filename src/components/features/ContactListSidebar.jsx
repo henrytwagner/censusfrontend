@@ -20,6 +20,8 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
   const [searchParams, setSearchParams] = useSearchParams(); // Access query parameters
   const [contacts, setContacts] = useState([]);
   const contact = searchParams.get('contactId') || '';
+  const contactType = searchParams.get('contactType') || '';
+
   useEffect(() => {
     const fetchContacts = async () => {
       try {
@@ -27,7 +29,7 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
         const data = await response.json();
         setContacts(data);
       } catch (err) {
-        console.error('Failed to load conatacts:', err);
+        console.error('Failed to load contacts:', err);
       }
     };
 
@@ -61,7 +63,10 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
                   key={member.id}
                   className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 ${member.id === contact ? 'selected border-l-4 border-l-blue-500 bg-black/5' : 'hover:bg-black/1.5'}`}
                   onClick={() => {
-                    setSearchParams({ contactId: member.id });
+                    setSearchParams({
+                      contactId: member.id,
+                      contactType: contactType,
+                    });
                   }}
                 >
                   {renderFields(member)}

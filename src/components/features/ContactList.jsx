@@ -49,7 +49,7 @@ const ContactList = ({
 
   const handleMemberClick = (member) => {
     if (navigateTo) {
-      navigate(`${navigateTo}?contactId=${member.id}`); // Pass the selected ID as a query parameter
+      navigate(`${navigateTo}?contactId=${member.id}&contactType=contact`); // Pass the selected ID as a query parameter
     } else {
       console.log('Member clicked:', member);
     }
@@ -68,7 +68,7 @@ const ContactList = ({
               <div
                 key={member.id}
                 className="flex items-center justify-start gap-4 px-2 py-0"
-                onDoubleClick={() => handleMemberClick(member)}
+                onClick={() => handleMemberClick(member)}
               >
                 {renderFields(member)}
               </div>

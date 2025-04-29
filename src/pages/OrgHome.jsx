@@ -29,7 +29,7 @@ const OrgHome = () => {
   );
 
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <ContactListSidebar
         fetchUrl={`/api/organizations/${orgId}/members`}
         groupByField="last_name"

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuthFetch } from '../../utils/authFetch';
+import PrivateContact from './PrivateContact';
+import PublicContact from './PublicContact';
 
 const Contact = () => {
   const authFetch = useAuthFetch();
@@ -9,6 +11,7 @@ const Contact = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const contactId = searchParams.get('contactId') || 'None Selected';
+  const contactType = searchParams.get('contactType') || 'None Selected';
 
   useEffect(() => {
     const fetchContact = async () => {
@@ -16,6 +19,9 @@ const Contact = () => {
         const response = await authFetch(`/api/contacts/${contactId}`);
         const data = await response.json();
         setContact(data);
+        // if (contact.linked_profile) {
+        //   contactType = 'contact';       TODO: DELETE this and do Saved Solution
+        // }
       } catch (err) {
         console.error('Failed to load contact:', err);
       }
@@ -24,7 +30,7 @@ const Contact = () => {
   }, [contactId]);
 
   return (
-    <div className="flex flex-col gap-4 w-full py-5 px-10">
+    <div className="flex flex-col gap-4 w-full my-5 mx-10">
       <div className="flex flex-row items-center gap-4">
         <div className="rounded-full h-18 w-18 shrink-0 overflow-hidden m-2">
           {contact.profile_image_url ? (
@@ -54,9 +60,34 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="text-lg">
-        This is the contact page for {contact.first_name} {contact.last_name}.
+      <div className="w-full h-10 flex items-center">
+        <button
+          onClick={() => setSearchParams({ contactId, contactType: 'contact' })}
+          className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${contactType === 'contact' ? '  border-b-white' : 'border-white border-b-gray-300'}  border-gray-300`}
+        >
+          Contact
+        </button>
+        {contact.linked_profile && (
+          <button
+            onClick={() =>
+              setSearchParams({ contactId, contactType: 'public' })
+            }
+            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${contactType === 'public' ? '  border-b-white' : 'border-white border-b-gray-300'}  border-gray-300`}
+          >
+            Public Profile
+          </button>
+        )}
+
+        <div className="w-full h-full flex items-center border-b-1 border-gray-300">
+          {!contact.linked_profile && (
+            <div className=" w-fit h-fit mx-1 px-2 py-1 rounded-full border-1 border-gray-300 text-sm">
+              🔗 Link Public Profile
+            </div>
+          )}
+        </div>
       </div>
+
+      {contactType === 'contact' ? <PrivateContact /> : <PublicContact />}
     </div>
   );
 };
