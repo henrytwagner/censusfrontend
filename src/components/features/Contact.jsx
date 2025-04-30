@@ -6,28 +6,34 @@ import PublicContact from './PublicContact';
 
 const Contact = () => {
   const authFetch = useAuthFetch();
+  const [searchParams] = useSearchParams();
+  const contactId = searchParams.get('contactId');
+  const userId = searchParams.get('userId');
 
-  const [contact, setContact] = useState({});
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const contactId = searchParams.get('contactId') || 'None Selected';
-  const contactType = searchParams.get('contactType') || 'None Selected';
+  const [contact, setContact] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchContact = async () => {
       try {
-        const response = await authFetch(`/api/contacts/${contactId}`);
-        const data = await response.json();
+        const endpoint = contactId
+          ? `/api/contacts/unified/${contactId}/`
+          : `/api/contacts/unified/user/${userId}/`;
+        const res = await authFetch(endpoint);
+        const data = await res.json();
         setContact(data);
-        // if (contact.linked_profile) {
-        //   contactType = 'contact';       TODO: DELETE this and do Saved Solution
-        // }
       } catch (err) {
         console.error('Failed to load contact:', err);
+      } finally {
+        setLoading(false);
       }
     };
+
     fetchContact();
-  }, [contactId]);
+  }, [contactId, userId]);
+
+  if (loading) return <div>Loading...</div>;
+  if (!contact) return <div>Contact not found.</div>;
 
   return (
     <div className="flex flex-col gap-4 w-full my-5 mx-10">
@@ -51,44 +57,29 @@ const Contact = () => {
           <div className="text-5xl font-thin">
             {contact.first_name} {contact.last_name}
           </div>
-          <div>
-            {contact.username ? (
-              <div className="text-lg font-bold">{contact.username}</div>
-            ) : (
-              <div className="text-lg font-bold">Link Contact</div>
-            )}
-          </div>
+          <div className="text-lg font-bold">{contact.username || ''}</div>
         </div>
       </div>
       <div className="w-full h-10 flex items-center">
         <button
           onClick={() => setSearchParams({ contactId, contactType: 'contact' })}
-          className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${contactType === 'contact' ? '  border-b-white' : 'border-white border-b-gray-300'}  border-gray-300`}
+          className="w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 border-gray-300"
         >
           Contact
         </button>
-        {contact.linked_profile && (
-          <button
-            onClick={() =>
-              setSearchParams({ contactId, contactType: 'public' })
-            }
-            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${contactType === 'public' ? '  border-b-white' : 'border-white border-b-gray-300'}  border-gray-300`}
-          >
-            Public Profile
-          </button>
-        )}
-
-        <div className="w-full h-full flex items-center border-b-1 border-gray-300">
-          {!contact.linked_profile && (
-            <div className=" w-fit h-fit mx-1 px-2 py-1 rounded-full border-1 border-gray-300 text-sm">
-              🔗 Link Public Profile
-            </div>
-          )}
-        </div>
+        <button
+          onClick={() => setSearchParams({ userId, contactType: 'public' })}
+          className="w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 border-gray-300"
+        >
+          Public Profile
+        </button>
       </div>
-
-      {contactType === 'contact' ? <PrivateContact /> : <PublicContact />}
+      {contact.contact_id ? (
+        <PrivateContact contactId={contact.contact_id} />
+      ) : null}
+      {contact.user_id ? <PublicContact userId={contact.user_id} /> : null}
     </div>
   );
 };
+
 export default Contact;

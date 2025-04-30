@@ -15,11 +15,17 @@ const groupBy = (array, getKey) => {
   }, {});
 };
 
-const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
+const ContactListSidebar = ({
+  listType,
+  fetchUrl,
+  groupByField,
+  renderFields,
+}) => {
   const authFetch = useAuthFetch();
   const [searchParams, setSearchParams] = useSearchParams(); // Access query parameters
   const [contacts, setContacts] = useState([]);
-  const contact = searchParams.get('contactId') || '';
+  const selectedId =
+    searchParams.get(listType === 'users' ? 'userId' : 'contactId') || '';
   const contactType = searchParams.get('contactType') || '';
 
   useEffect(() => {
@@ -61,10 +67,11 @@ const ContactListSidebar = ({ fetchUrl, groupByField, renderFields }) => {
               return (
                 <div
                   key={member.id}
-                  className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 ${member.id === contact ? 'selected border-l-4 border-l-blue-500 bg-black/5' : 'hover:bg-black/1.5'}`}
+                  className={`person cursor-default flex items-center py-0.5 px-2 h-10 flex-shrink-0 self-stretch justify-between rounded-md border-t border-gray-200 ${member.id === selectedId ? 'selected border-l-4 border-l-blue-500 bg-black/5' : 'hover:bg-black/1.5'}`}
                   onClick={() => {
                     setSearchParams({
-                      contactId: member.id,
+                      [listType === 'users' ? 'userId' : 'contactId']:
+                        member.id,
                       contactType: contactType,
                     });
                   }}

@@ -86,6 +86,7 @@ const Organization = () => {
     <div className="flex flex-col items-center gap-6 py-12 w-full box-border overflow-y-auto">
       <GroupBanner id={id} />
       <ContactList
+        listType="users"
         fetchUrl={`/api/organizations/${id}/members`}
         groupByField="last_name"
         headerFields={headerFields}

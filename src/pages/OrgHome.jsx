@@ -31,6 +31,7 @@ const OrgHome = () => {
   return (
     <div className="flex w-full">
       <ContactListSidebar
+        listType="users"
         fetchUrl={`/api/organizations/${orgId}/members`}
         groupByField="last_name"
         renderFields={renderFields}

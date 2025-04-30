@@ -16,6 +16,7 @@ const Home = () => {
   return (
     <div className="flex w-full">
       <ContactListSidebar
+        listType={'contacts'}
         fetchUrl="/api/contacts"
         groupByField="last_name"
         renderFields={renderFields}

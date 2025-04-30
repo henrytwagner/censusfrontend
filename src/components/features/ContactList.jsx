@@ -15,6 +15,7 @@ const groupBy = (array, getKey) => {
 };
 
 const ContactList = ({
+  listType,
   fetchUrl,
   groupByField,
   headerFields,
@@ -48,11 +49,11 @@ const ContactList = ({
   const sortedKeys = Object.keys(groupedMembers).sort();
 
   const handleMemberClick = (member) => {
-    if (navigateTo) {
-      navigate(`${navigateTo}?contactId=${member.id}&contactType=contact`); // Pass the selected ID as a query parameter
-    } else {
-      console.log('Member clicked:', member);
-    }
+    navigate(
+      `${navigateTo}?${listType === 'users' ? 'userId' : 'contactId'}=${member.id}&contactType=${
+        listType === 'userList' ? 'user' : 'contact'
+      }`
+    );
   };
 
   return (

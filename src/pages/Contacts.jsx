@@ -65,6 +65,7 @@ const Contacts = () => {
         CONTACTS
       </div> */}
       <ContactList
+        listTpe="contacts"
         fetchUrl={`/api/contacts`}
         groupByField="last_name"
         headerFields={headerFields}
