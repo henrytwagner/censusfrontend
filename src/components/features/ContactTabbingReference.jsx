@@ -34,7 +34,7 @@ const Contact = () => {
     if (contactId || !userId) return;
     (async () => {
       try {
-        const res = await authFetch(`/api/users/public/${userId}/`);
+        const res = await authFetch(`/api/public-profiles/${userId}/`);
         const data = await res.json();
         setPublicProfile(data);
 

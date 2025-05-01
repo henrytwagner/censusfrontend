@@ -26,7 +26,7 @@ const ContactListSidebar = ({
   const [contacts, setContacts] = useState([]);
   const selectedId =
     searchParams.get(listType === 'users' ? 'userId' : 'contactId') || '';
-  const contactType = searchParams.get('contactType') || '';
+  const view = searchParams.get('view') || '';
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -72,7 +72,7 @@ const ContactListSidebar = ({
                     setSearchParams({
                       [listType === 'users' ? 'userId' : 'contactId']:
                         member.id,
-                      contactType: contactType,
+                      view: view,
                     });
                   }}
                 >

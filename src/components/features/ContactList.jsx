@@ -50,7 +50,7 @@ const ContactList = ({
 
   const handleMemberClick = (member) => {
     navigate(
-      `${navigateTo}?${listType === 'users' ? 'userId' : 'contactId'}=${member.id}&contactType=${
+      `${navigateTo}?${listType === 'users' ? 'userId' : 'contactId'}=${member.id}&view=${
         listType === 'userList' ? 'user' : 'contact'
       }`
     );

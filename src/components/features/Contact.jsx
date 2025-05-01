@@ -6,9 +6,10 @@ import PublicContact from './PublicContact';
 
 const Contact = () => {
   const authFetch = useAuthFetch();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const contactId = searchParams.get('contactId');
   const userId = searchParams.get('userId');
+  const view = searchParams.get('view') || (contactId ? 'contact' : 'public');
 
   const [contact, setContact] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,13 @@ const Contact = () => {
 
     fetchContact();
   }, [contactId, userId]);
+
+  const handleTabChange = (tab) => {
+    setSearchParams({
+      ...(contactId ? { contactId } : { userId }),
+      view: tab,
+    });
+  };
 
   if (loading) return <div>Loading...</div>;
   if (!contact) return <div>Contact not found.</div>;
@@ -61,23 +69,44 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-full h-10 flex items-center">
-        <button
-          onClick={() => setSearchParams({ contactId, contactType: 'contact' })}
-          className="w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 border-gray-300"
-        >
-          Contact
-        </button>
-        <button
-          onClick={() => setSearchParams({ userId, contactType: 'public' })}
-          className="w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 border-gray-300"
-        >
-          Public Profile
-        </button>
+        {contact.contact_id && (
+          <button
+            onClick={() => handleTabChange('contact')}
+            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${view === 'contact' ? '  border-b-white ' : 'border-white border-b-gray-300 hover:bg-gray-200'}  border-gray-300`}
+          >
+            Contact
+          </button>
+        )}
+        {contact.user_id && (
+          <button
+            onClick={() => handleTabChange('public')}
+            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${view === 'public' ? '  border-b-white' : 'border-white border-b-gray-300 hover:bg-gray-200'}  border-gray-300`}
+          >
+            Public Profile
+          </button>
+        )}
+
+        <div className="w-full h-full flex items-center border-b-1 border-gray-300">
+          {!contact.user_id && (
+            <div className=" w-fit h-fit mx-1 px-2 py-1 rounded-full border-1 border-gray-300 text-sm">
+              🔗 Link Public Profile
+            </div>
+          )}
+          {!contact.contact_id && (
+            <div className=" w-fit h-fit mx-1 px-2 py-1 rounded-full border-1 border-gray-300 text-sm">
+              Add to Contacts
+            </div>
+          )}
+        </div>
       </div>
-      {contact.contact_id ? (
+
+      {/* Tab Content */}
+      {view === 'contact' && contact.contact_id && (
         <PrivateContact contactId={contact.contact_id} />
-      ) : null}
-      {contact.user_id ? <PublicContact userId={contact.user_id} /> : null}
+      )}
+      {view === 'public' && contact.user_id && (
+        <PublicContact userId={contact.user_id} />
+      )}
     </div>
   );
 };
