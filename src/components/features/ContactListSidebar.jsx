@@ -51,6 +51,15 @@ const ContactListSidebar = ({
 
   return (
     <div className="contactlist border-r border-gray-300 flex flex-col shrink-0 p-6 gap-2.5 h-full w-50 sm:w-60">
+      <div className="w-full h-fit flex justify-between items-center">
+        <div className="w-fit h-6 text-blue-600">{'< List'}</div>
+        <div className="w-fit h-full font-bold">
+          {listType === 'contacts' ? 'Contacts' : 'Users'}
+        </div>
+        <div className="w-6 h-6 aspect-square rounded-full border-2 text-center border-gray-400 text-gray-400">
+          +
+        </div>
+      </div>
       <SearchBar />
       <div className="contactlist-scrollable w-full overflow-y-auto pt-2.5 pb-7.5 scrollbar-hide">
         {/* TODO: make this not just character, if sorting contacts by recent want words */}
