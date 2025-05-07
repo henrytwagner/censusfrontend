@@ -39,7 +39,7 @@ function Header() {
 
           className="w-16 pr-4 h-12 flex items-center justify-center border-r-1 border-gray-500"
         >
-          <img className="" src="/censusIcon.003.png" alt="" />
+          <img className="h-8 dark:invert" src="/censusIcon.003.png" alt="" />
         </Link>
         {me && <OrgStack />}
       </div>

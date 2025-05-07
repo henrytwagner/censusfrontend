@@ -44,7 +44,7 @@ const Contact = () => {
   if (!contact) return <div>Contact not found.</div>;
 
   return (
-    <div className="flex flex-col gap-4 w-full my-5 mx-10">
+    <div className="flex flex-col gap-4 w-full py-5 px-10 bg-contact dark:bg-contact-dark">
       <div className="flex flex-row items-center gap-4">
         <div className="rounded-full h-18 w-18 shrink-0 overflow-hidden m-2">
           {contact.profile_image_url ? (
@@ -72,7 +72,7 @@ const Contact = () => {
         {contact.contact_id && (
           <button
             onClick={() => handleTabChange('contact')}
-            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${view === 'contact' ? '  border-b-white ' : 'border-white border-b-gray-300 hover:bg-gray-200'}  border-gray-300`}
+            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${view === 'contact' ? '  border-b-bg ' : 'border-bg border-b-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}  border-gray-300`}
           >
             Contact
           </button>
@@ -80,7 +80,7 @@ const Contact = () => {
         {contact.user_id && (
           <button
             onClick={() => handleTabChange('public')}
-            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${view === 'public' ? '  border-b-white' : 'border-white border-b-gray-300 hover:bg-gray-200'}  border-gray-300`}
+            className={`w-fit h-full text-nowrap flex items-center px-3 rounded-t-2xl border-1 ${view === 'public' ? '  border-b-bg' : 'border-bg border-b-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'}  border-gray-300`}
           >
             Public Profile
           </button>

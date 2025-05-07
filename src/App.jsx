@@ -14,6 +14,7 @@ import Organization from '@pages/Organization';
 import Contacts from '@pages/Contacts';
 import Logout from '@components/routing/Logout';
 import Profile from './pages/Profile';
+import Tester from './components/ui/tester';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -87,7 +88,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          <Route path="tester" element={<Tester />} />
           <Route path="empty" element={<Empty />} />
         </Route>
         <Route path="*" element={<NotFound />} />
