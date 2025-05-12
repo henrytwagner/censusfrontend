@@ -46,36 +46,37 @@ const GroupBanner = ({ id }) => {
   // if (!organizationInfo || !finalImgSrc) return null; // Commented to reduce glitch in between contact and org page
 
   return (
-    <div className="flex justify-center items-center w-150 lg:w-2/3  h-fit shadow-md border-1 border-gray-300 rounded-lg">
+    <div className="flex justify-center items-center w-150 lg:w-2/3  h-fit rounded-lg">
       <div className="flex flex-col w-full items-between justify-between gap-3 flex-1 ">
         {/* Top Side*/}
         <div className="flex flex-row w-full justify-between items-center gap-1 h-24 flex-1 text-gray-900">
-          <div className="flex flex-row justify-between items-center w-full px-4">
-            <div className="text-4xl font-light">{organizationInfo.name}</div>
-            <div className="flex flex-row gap-4">
+          <div className="flex flex-row justify-between items-center w-full">
+            <div className="text-4xl font-light flex flex-row gap-4 items-center">
+              <div className="w-20 h-20 rounded-lg shadow-md overflow-hidden flex items-center justify-center shrink-0">
+                {finalImgSrc ? (
+                  <img
+                    src={finalImgSrc}
+                    alt="Org"
+                    className="w-full h-full object-cover object-center"
+                  />
+                ) : (
+                  <div className="w-64 h-64" />
+                )}
+              </div>
+
+              <div className="flex flex-col justify-center items-start gap-1">
+                {organizationInfo.name}
+                <div className=" text-sm font-light leading-[1.15]">
+                  {organizationInfo.bio}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-row gap-4 px-4">
               <div className="bg-gray-300 h-6 w-6"></div>
               <div className="bg-gray-300 h-6 w-6"></div>
               <div className="bg-gray-300 h-6 w-6"></div>
             </div>
           </div>
-
-          <div className="w-20 h-20 rounded-lg shadow-md overflow-hidden flex items-center justify-center shrink-0">
-            {finalImgSrc ? (
-              <img
-                src={finalImgSrc}
-                alt="Org"
-                className="w-full h-full object-cover object-center"
-              />
-            ) : (
-              <div className="w-64 h-64" />
-            )}
-          </div>
-        </div>
-
-        {/* Right Side*/}
-
-        <div className=" text-sm font-light leading-[1.15] p-4">
-          {organizationInfo.bio}
         </div>
       </div>
     </div>
